@@ -1,0 +1,55 @@
+{
+  "name": "Awatch",
+  "version": "0.0.0",
+  "description": "Awatch",
+  "main": "index.js",
+  "scripts": {
+    "start": "watchify index.js -o public/bundle.js -d --extension=js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackielii/simplest-redux-example.git"
+  },
+  "keywords": [
+    "redux",
+    "react"
+  ],
+  "author": "Jackie Li",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackielii/simplest-redux-example/issues"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "homepage": "https://github.com/jackielii/simplest-redux-example#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "bootstrap": "^3.3.6",
+    "cookie-parser": "^1.4.1",
+    "express": "^4.13.4",
+    "helmet": "^1.1.0",
+    "http": "0.0.0",
+    "isomorphic-fetch": "^2.2.1",
+    "jade": "^1.11.0",
+    "jfs": "^0.2.6",
+    "morgan": "^1.6.1",
+    "node-schedule": "^0.6.0",
+    "nodemon": "^1.8.1",
+    "path": "^0.12.7",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-redux": "^3.1.0",
+    "redux": "^3.0.0",
+    "redux-thunk": "^1.0.3",
+    "serve-favicon": "^2.3.0",
+    "tmdbv3": "^0.1.2"
+  },
+  "devDependencies": {
+    "browserify": "~10.2.4",
+    "babelify": "~6.1.2",
+    "watchify": "^3.3.1"
+  }
+}
