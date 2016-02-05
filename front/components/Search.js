@@ -1,34 +1,36 @@
 import React, { Component, PropTypes } from 'react'
-
+import Spinner from './Spinner'
 export default class Search extends Component {
     search(query) {/*
-        //In order to save api usage, we don't search for the more lengthy query, if the shorter one don't yield anything.
-        if (this.state.lastQuery && this.state.suggestions.length == 0 && query.length > this.state.lastQuery.length) {
-            return;
-        }*/
+     //In order to save api usage, we don't search for the more lengthy query, if the shorter one don't yield anything.
+     if (this.state.lastQuery && this.state.suggestions.length == 0 && query.length > this.state.lastQuery.length) {
+     return;
+     }*/
         this.props.performSearch(query);
     }
 
     clear() {
-       // this.setState({suggestions: []})
+        this.props.clearSearchResults();
     }
 
     click(suggestion) {
-        //this.props.onSuggestionClick(suggestion.id);
+        this.props.chooseMovie(suggestion);
     }
 
     render() {
         return (
             <div className="searchLayout">
-                <SearchField search={this.search.bind(this)} clear={this.clear}/>
-                <SuggestionsContainer suggestions={this.props.searchResults} onSuggestionClick={this.click}/>
+                <SearchField search={this.search.bind(this)} isSearching={this.props.isSearching}
+                             clear={this.clear.bind(this)}/>
+                <SuggestionsContainer suggestions={this.props.searchResults} onSuggestionClick={this.click.bind(this)}/>
             </div>
         );
     }
 }
 
 Search.propTypes = {
-    searchResults: PropTypes.array.isRequired
+    searchResults: PropTypes.array.isRequired,
+    isSearching: PropTypes.bool
 };
 
 const MIN_QUERY_LENGTH = 3;
@@ -49,7 +51,15 @@ var SearchField = React.createClass({
     render: function () {
         return (
             <div className="searchField">
-                <input type="text" id="searchField" onChange={this.handleSearch} placeholder="What have you watched?"/>
+                <div className="row">
+                    <div className="col-md-10">
+                        <input type="text" id="searchField" onChange={this.handleSearch}
+                               placeholder="What have you watched?"/>
+                    </div>
+                    <div className="col-md-2" style={{"height": "100%", "margin": "auto"}}>
+                        <Spinner visible={this.props.isSearching}/>
+                    </div>
+                </div>
             </div>
         )
     }
@@ -84,7 +94,7 @@ var SuggestionRow = React.createClass({
                     <div className="suggestion-thumbnail"><img src={this.props.poster_url}/></div>
                 </div>
                 <div className="col-md-8 suggestion-title">{this.props.title}</div>
-                <div className="col-md-2 suggestion-year">{this.props.year}</div>
+                <div className="col-md-2 year">{this.props.year}</div>
             </div>
         )
     }

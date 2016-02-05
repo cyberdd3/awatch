@@ -17,6 +17,21 @@ function receiveSearchResult(json) {
     }
 }
 
+export const CLEAR_SEARCH_RESULTS = 'CLEAR_SEARCH_RESULTS';
+export function clearSearchResults() {
+    return {
+        type: CLEAR_SEARCH_RESULTS
+    }
+}
+
+export const CHOOSE_MOVIE = 'CHOOSE_MOVIE';
+export function chooseMovie(movie) {
+    return {
+        type: CHOOSE_MOVIE,
+        chosenMovie: movie
+    }
+}
+
 
 export function performSearch(query) {
     return function (dispatch) {

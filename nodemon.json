@@ -1,4 +1,4 @@
 {
   "verbose": false,
-  "ignore": ["public", "db.json"]
+  "ignore": ["front", "storage.json", "db"]
 }

@@ -12,7 +12,7 @@ var api = require('./routes/api');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'layout'));
+app.set('views', path.join(__dirname, 'front/layout'));
 app.set('view engine', 'jade');
 
 app.set('env', 'development');
@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use(helmet());
 
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')));
-app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use('/front', express.static(path.join(__dirname, 'front')));
 
 app.use('/', routes);
 app.use('/api', api);

@@ -1,3 +1,4 @@
 node_modules
 public/bundle.js
-db.json
+storage.json
+db
