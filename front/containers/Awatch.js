@@ -1,21 +1,18 @@
 import React, {Component, PropTypes} from 'react'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {performSearch} from '../actions/searchActions'
 import Discover from '../components/Discover'
 import Search from '../components/Search'
 
-import * as SearchActionCreators from '../actions/searchActions'
-import * as DiscoverActionCreators from '../actions/discoverActions'
+import {performSearch, clearSearchResults, chooseMovie} from '../actions/searchActions'
+import {loadSimilar, offerMovie} from '../actions/discoverActions'
 
 class Awatch extends Component {
     render() {
         const {searchResults, chosenMovie, isSearching, discoverResults, isLoading, dispatch} = this.props;
-        let searchActionCreators = bindActionCreators(SearchActionCreators, dispatch);
-        let discoverActionCreators = bindActionCreators(DiscoverActionCreators, dispatch);
-        let mockChosenMovie = {
-            id: 776
-        };
+        let searchActionCreators = bindActionCreators({performSearch, clearSearchResults, chooseMovie}, dispatch);
+        let discoverActionCreators = bindActionCreators({loadSimilar, offerMovie}, dispatch);
+
         return (
             <div id="layout">
                 {chosenMovie ?

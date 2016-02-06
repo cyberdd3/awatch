@@ -1,12 +1,10 @@
 import { combineReducers} from 'redux'
 
 import {
-    REQUEST_SEARCH, RECEIVE_SEARCH_RESULT, CLEAR_SEARCH_RESULTS, CHOOSE_MOVIE
-} from './actions/searchActions'
-
-import {
+    REQUEST_SEARCH, RECEIVE_SEARCH_RESULT, CLEAR_SEARCH_RESULTS, CHOOSE_MOVIE,
     REQUEST_LOADING_SIMILAR, RECEIVE_SIMILAR, OFFER_MOVIE
-} from './actions/discoverActions'
+} from './actions/actionTypes'
+
 
 const SUGGESTION_POSTER_PLACEHOLDER = "/front/public/images/placeholder.png";
 

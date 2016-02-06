@@ -2,30 +2,21 @@
   "name": "Awatch",
   "version": "0.0.0",
   "description": "Awatch",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "watchify front/index.js -o front/public/bundle.js -d --extension=js"
+    "start": "watchify front/index.js -o front/public/bundle.js -d --extension=js",
+    "test": "mocha --compilers js:babel-core/register --recursive",
+    "test:watch": "npm test -- --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jackielii/simplest-redux-example.git"
-  },
-  "keywords": [
-    "redux",
-    "react"
-  ],
-  "author": "Jackie Li",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jackielii/simplest-redux-example/issues"
-  },
+  "author": "Ivan Suvorov",
   "browserify": {
     "transform": [
       "babelify"
     ]
   },
-  "homepage": "https://github.com/jackielii/simplest-redux-example#readme",
   "dependencies": {
+    "babel-polyfill": "^6.3.14",
+    "babel-register": "^6.4.3",
     "body-parser": "^1.14.2",
     "bootstrap": "^3.3.6",
     "cookie-parser": "^1.4.1",
@@ -38,6 +29,7 @@
     "kerberos": "0.0.18",
     "mongodb": "^2.1.4",
     "morgan": "^1.6.1",
+    "moviedb": "^0.2.2",
     "node-schedule": "^0.6.0",
     "nodemon": "^1.8.1",
     "path": "^0.12.7",
@@ -46,12 +38,16 @@
     "react-redux": "^3.1.0",
     "redux": "^3.0.0",
     "redux-thunk": "^1.0.3",
-    "serve-favicon": "^2.3.0",
-    "tmdbv3": "^0.1.2"
+    "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
-    "browserify": "~10.2.4",
+    "babel-preset-es2015": "^6.3.13",
     "babelify": "~6.1.2",
+    "browserify": "~10.2.4",
+    "expect": "^1.14.0",
+    "mocha": "^2.4.5",
+    "nock": "^7.0.2",
+    "redux-mock-store": "0.0.6",
     "watchify": "^3.3.1"
   }
 }

@@ -1,14 +1,16 @@
 import fetch from 'isomorphic-fetch'
-export const REQUEST_LOADING_SIMILAR = 'REQUEST_LOADING_SIMILAR';
-function requestLoadingSimilar(movieId) {
+import {
+    REQUEST_LOADING_SIMILAR, RECEIVE_SIMILAR, OFFER_MOVIE
+} from './actionTypes'
+
+export function requestLoadingSimilar(movieId) {
     return {
         type: REQUEST_LOADING_SIMILAR,
         movieId
     }
 }
 
-export const RECEIVE_SIMILAR = "RECEIVE_SIMILAR";
-function receiveSimilar(json) {
+export function receiveSimilar(json) {
     console.log(json);
     return {
         type: RECEIVE_SIMILAR,
@@ -18,7 +20,6 @@ function receiveSimilar(json) {
     }
 }
 
-export const OFFER_MOVIE = "OFFER_MOVIE";
 export function offerMovie() {
     return {
         type: OFFER_MOVIE
