@@ -2,3 +2,4 @@ node_modules
 front/public/bundle.js
 storage.json
 db
+.idea
