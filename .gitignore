@@ -1,4 +1,5 @@
 node_modules
-public/bundle.js
+front/public/bundle.js
 storage.json
 db
+.idea
