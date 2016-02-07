@@ -1,6 +1,5 @@
 import expect from 'expect'
 import * as searchActions from '../../front/actions/searchActions'
-import * as discoverActions from '../../front/actions/discoverActions'
 import * as types from '../../front/actions/actionTypes'
 
 
@@ -46,9 +45,8 @@ describe('search actions', () => {
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import nock from 'nock'
-
+import {HOSTNAME} from '../test_config'
 const mockStore = configureMockStore([thunk]);
-const HOSTNAME = "http://127.0.0.1:3000";
 
 describe("search async actions", () => {
     afterEach(() => {
@@ -67,7 +65,6 @@ describe("search async actions", () => {
         };
         const query = 'Eternal';
         nock(HOSTNAME)
-            .log(console.log)
             .get('/api/search/')
             .query({query})
             .reply(200, searchResult);

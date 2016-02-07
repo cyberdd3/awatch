@@ -23,6 +23,7 @@
     "express": "^4.13.4",
     "helmet": "^1.1.0",
     "http": "0.0.0",
+    "immutable": "^3.7.6",
     "isomorphic-fetch": "^2.2.1",
     "jade": "^1.11.0",
     "jfs": "^0.2.6",

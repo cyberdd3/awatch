@@ -11,7 +11,6 @@ export function requestLoadingSimilar(movieId) {
 }
 
 export function receiveSimilar(json) {
-    console.log(json);
     return {
         type: RECEIVE_SIMILAR,
         movies: json.results,
@@ -26,12 +25,15 @@ export function offerMovie() {
     }
 }
 
-export function loadSimilar(movieId) {
+export function loadSimilar(movieId, hostname = "") {
     return function (dispatch) {
         dispatch(requestLoadingSimilar(movieId));
-
-        return fetch(`/api/discover?id=${movieId}`)
+        return fetch(`${hostname}/api/discover/?id=${movieId}`)
             .then(response => response.json())
-            .then(json => dispatch(receiveSimilar(json)));
+            .then(json => dispatch(receiveSimilar(json)))
+            .catch(err => {
+                //TODO error catch
+                console.log("meow", err);
+            });
     }
 }

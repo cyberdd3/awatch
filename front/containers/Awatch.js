@@ -33,13 +33,13 @@ Awatch.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        chosenMovie: state.searchMovies.chosenMovie,
+        chosenMovie: state.search.chosenMovie,
 
-        searchResults: state.searchMovies.results,
-        isSearching: state.searchMovies.isSearching,
+        searchResults: state.search.results,
+        isSearching: state.search.isSearching,
 
-        discoverResults: state.discoverMovies.results,
-        isLoading: state.discoverMovies.isLoading
+        discoverResults: state.discover.results,
+        isLoading: state.discover.isLoading
 
     }
 }
