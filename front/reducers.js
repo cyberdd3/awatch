@@ -12,18 +12,16 @@ const SUGGESTION_POSTER_PLACEHOLDER = "/front/public/images/placeholder.png";
 export function search(state = Map({results: List(), isSearching: false, chosenMovie: null}), action) {
     switch (action.type) {
         case REQUEST_SEARCH:
-            return state.update('isSearching', true);
+            return state.set('isSearching', true);
         case RECEIVE_SEARCH_RESULT:
-            state = state.update('isSearching', false);
-
             if (state.get('isSearching'))
-                return state.update('results', List(resolveMoviesWithPosters(action)));
+                state = state.set('results', List(resolveMoviesWithPosters(action))).set('isSearching', false);
 
             return state;
         case CLEAR_SEARCH_RESULTS:
-            return state.update('results', List());
+            return state.set('results', List());
         case CHOOSE_MOVIE:
-            return state.update('isSearching', false).update('chosenMovie', action.chosenMovie);
+            return state.set('isSearching', false).set('chosenMovie', action.chosenMovie);
         default:
             return state
     }
@@ -32,19 +30,14 @@ export function search(state = Map({results: List(), isSearching: false, chosenM
 export function discover(state = Map({results: List(), isLoading: false}), action) {
     switch (action.type) {
         case REQUEST_LOADING_SIMILAR:
-            return state.update('isLoading', true);
+            return state.set('isLoading', true);
         case RECEIVE_SIMILAR:
-            let results = state.results.slice();
-            if (state.isLoading)
-                results = results.concat(resolveMoviesWithPosters(action));
-            return Object.assign({}, state, {
-                isLoading: false,
-                results: results
-            });
+            if (state.get('isLoading'))
+                state = state.update('results', results => results.concat(resolveMoviesWithPosters(action))).set('isLoading', false);
+            console.log(state);
+            return state;
         case OFFER_MOVIE:
-            return Object.assign({}, state, {
-                results: state.results.slice(1)
-            });
+            return state.update('results', results => results.shift());
         default:
             return state
     }

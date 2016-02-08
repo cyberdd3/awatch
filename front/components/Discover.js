@@ -7,8 +7,8 @@ export default class Discover extends Component {
     }
 
     loadNextMovie() {
-        if (this.props.discoverResults.length <= 4) {
-            this.props.loadSimilar(this.props.discoverResults[0].id);
+        if (this.props.discoverResults.size <= 4) {
+            this.props.loadSimilar(this.props.discoverResults.get(0).id);
         }
         this.props.offerMovie();
 
@@ -18,8 +18,8 @@ export default class Discover extends Component {
         return (
             <div className="discoverLayout">
                 <Spinner visible={this.props.isLoading}/>
-                {this.props.discoverResults[0] ?
-                    <Movie nextMovieClick={this.loadNextMovie.bind(this)} {...this.props.discoverResults[0]} /> : ''}
+                {this.props.discoverResults.get(0) ?
+                    <Movie nextMovieClick={this.loadNextMovie.bind(this)} {...this.props.discoverResults.get(0)} /> : ''}
             </div>
         )
     }

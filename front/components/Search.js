@@ -29,7 +29,7 @@ export default class Search extends Component {
 }
 
 Search.propTypes = {
-    searchResults: PropTypes.array.isRequired,
+    searchResults: PropTypes.object.isRequired,
     isSearching: PropTypes.bool
 };
 

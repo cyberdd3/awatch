@@ -26,20 +26,21 @@ class Awatch extends Component {
 
 Awatch.propTypes = {
     chosenMovie: PropTypes.object,
-    searchResults: PropTypes.array,
+    searchResults: PropTypes.object,
     isSearching: PropTypes.bool,
     dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
+    console.log(state);
     return {
-        chosenMovie: state.search.chosenMovie,
+        chosenMovie: state.search.get('chosenMovie'),
 
-        searchResults: state.search.results,
-        isSearching: state.search.isSearching,
+        searchResults: state.search.get('results'),
+        isSearching: state.search.get('isSearching'),
 
-        discoverResults: state.discover.results,
-        isLoading: state.discover.isLoading
+        discoverResults: state.discover.get('results'),
+        isLoading: state.discover.get('isLoading')
 
     }
 }
