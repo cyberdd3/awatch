@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import Spinner from './Spinner'
-export default class Search extends Component {
+import PureComponent from 'react-pure-render/component'
+
+export default class Search extends PureComponent {
     search(query) {/*
      //In order to save api usage, we don't search for the more lengthy query, if the shorter one don't yield anything.
      if (this.state.lastQuery && this.state.suggestions.length == 0 && query.length > this.state.lastQuery.length) {

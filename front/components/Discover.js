@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import Spinner from './Spinner'
+import PureComponent from 'react-pure-render/component'
 
-export default class Discover extends Component {
+export default class Discover extends PureComponent {
     componentDidMount() {
         this.props.loadSimilar(this.props.chosenMovie.id);
     }
@@ -31,7 +32,6 @@ var Movie = React.createClass({
         let yearText = " (" + this.props.release_date.substring(0, 4) + ")";
         return (
             <div className="movie">
-
                 <div className="poster">
                     <img src={this.props.poster_path}/>
                     <h2>{this.props.original_title}<span className="year">{yearText}</span></h2>

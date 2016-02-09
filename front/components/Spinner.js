@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
+import PureComponent from 'react-pure-render/component'
 
-export default class Spinner extends Component {
+export default class Spinner extends PureComponent {
     render() {
         return (
             <div className={this.props.visible ? 'spinner' : 'spinner hidden'}>

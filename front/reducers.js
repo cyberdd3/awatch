@@ -34,7 +34,7 @@ export function discover(state = Map({results: List(), isLoading: false}), actio
         case RECEIVE_SIMILAR:
             if (state.get('isLoading'))
                 state = state.update('results', results => results.concat(resolveMoviesWithPosters(action))).set('isLoading', false);
-            console.log(state);
+
             return state;
         case OFFER_MOVIE:
             return state.update('results', results => results.shift());

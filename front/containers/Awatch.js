@@ -3,11 +3,11 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import Discover from '../components/Discover'
 import Search from '../components/Search'
-
+import PureComponent from 'react-pure-render/component'
 import {performSearch, clearSearchResults, chooseMovie} from '../actions/searchActions'
 import {loadSimilar, offerMovie} from '../actions/discoverActions'
 
-class Awatch extends Component {
+class Awatch extends PureComponent {
     render() {
         const {searchResults, chosenMovie, isSearching, discoverResults, isLoading, dispatch} = this.props;
         let searchActionCreators = bindActionCreators({performSearch, clearSearchResults, chooseMovie}, dispatch);
@@ -32,7 +32,6 @@ Awatch.propTypes = {
 };
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         chosenMovie: state.search.get('chosenMovie'),
 
@@ -41,7 +40,6 @@ function mapStateToProps(state) {
 
         discoverResults: state.discover.get('results'),
         isLoading: state.discover.get('isLoading')
-
     }
 }
 

@@ -23,7 +23,7 @@ router.get('/search', function (req, res, next) {
         return;
     }
     var page = parseInt(req.query.page) || 1;
-    tmdb.searchMovie({query: query, page: page}, function (err, data) {
+    tmdb.searchMovie({query: query, page: page, include_adult: false}, function (err, data) {
         if (err) {
             res.status(500).send(err);
             return;
